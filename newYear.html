@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>新年快乐</title>
+        <style type="text/css">
+            body {
+                background-color: #000000;
+                margin: 0;
+                padding: 0;
+            }
+            #background {
+                background-color: #00000000;
+                
+            }
+            .happyNewYear {
+                position: absolute;
+                bottom: 0px;
+                
+                animation-name: textUp;
+                animation-duration: 20s;
+                
+                color: #ff0000;
+                font-size: 35px;
+                text-shadow: 0 0 50px red,0 0 20px red,0 0 30px red,0 0 100px red;
+            }
+            
+            @keyframes textUp {
+                from { bottom: -100px; }
+                to { bottom: 500px; display: none; }
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            let fullWidth = window.innerWidth;
+            let text = ["新年快乐", "🎉🎉🎉", "除夕快乐"];
+                
+            function getRndInteger(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) ) + min;
+            }
+            async function addText() {
+                textElement = document.createElement("p");
+                textElement.textContent = text[getRndInteger(0, text.length - 1)];
+                textElement.style.position = "absolute";
+                textElement.style.color = "#ff0000";
+                textElement.style.left = getRndInteger(0, fullWidth - 50) + "px";
+                textElement.style.bottom = "-200px";
+                textElement.style.animationName = "textUp";
+                textElement.style.animationDuration = "2s";
+                textElement.style.fontSize = getRndInteger(20, 50) + "px";
+                textElement.style.textShadow = "0 0 50px red,0 0 20px red,0 0 30px red,0 0 100px red";
+                document.body.appendChild(textElement);
+            }
+            setInterval(()=>{
+                addText()
+            }, 2000)
+        </script>
+    </body>
+</html>
